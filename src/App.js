@@ -7,13 +7,19 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import Router from './components/master/Router';
+
+import reducers from './reducers';
 
 class App extends Component {
   render() {
+    const store = createStore(reducers);
     return (
-      <View>
-        <Text>Hellow</Text>
-      </View>
+      <Provider store={store}>
+        <Router />
+      </Provider>
     );
   }
 }
